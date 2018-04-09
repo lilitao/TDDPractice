@@ -20,7 +20,7 @@
     <artifactId>google-collect</artifactId>
     <version>1.0-rc1</version>
     <scope>system</scope>
-    <systemPath>D:\Users\ASNPHOI\git\TDDPractice\TDD\google-collections-0.8.jar</systemPath>
+    <systemPath>C:\Users\admin\git\TDDPractice\TDD\google-collections-0.8.jar</systemPath>
 </dependency>
 
   

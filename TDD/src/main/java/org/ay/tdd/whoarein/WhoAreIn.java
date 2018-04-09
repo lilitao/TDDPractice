@@ -15,7 +15,7 @@ public class WhoAreIn {
 			return new String[] {};
 		}
 		
-		List<String> result = new ArrayList<>();
+		List<String> result = new ArrayList();
 		for (String bStr : b) {
 			for (String aStr: a) {
 				if(bStr.indexOf(aStr ) > -1){
