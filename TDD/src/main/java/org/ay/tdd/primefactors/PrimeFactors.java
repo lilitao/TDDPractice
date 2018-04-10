@@ -1,4 +1,4 @@
-package org.ay.tdd.primefactos;
+package org.ay.tdd.primefactors;
 
 import java.util.ArrayList;
 

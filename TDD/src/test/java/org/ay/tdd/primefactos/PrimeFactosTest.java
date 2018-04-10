@@ -2,6 +2,7 @@ package org.ay.tdd.primefactos;
 
 import java.util.Arrays;
 
+import org.ay.tdd.primefactors.PrimeFactors;
 import org.junit.Assert;
 import org.junit.Test;
 

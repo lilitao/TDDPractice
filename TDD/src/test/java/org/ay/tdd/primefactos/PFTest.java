@@ -1,5 +1,6 @@
 package org.ay.tdd.primefactos;
 
+import org.ay.tdd.primefactors.PE;
 import org.junit.Assert;
 import org.junit.Test;
 
