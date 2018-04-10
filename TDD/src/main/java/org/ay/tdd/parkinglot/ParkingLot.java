@@ -1,37 +1,40 @@
 package org.ay.tdd.parkinglot;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class ParkingLot {
 	private int size = 0;
-	private List<String> certNo;
+	private Map<Token,Car> licencePlates;
 
 	public ParkingLot(int size) {
-		this.certNo = new CopyOnWriteArrayList<>();
+		this.licencePlates = new HashMap<Token, Car>();
 		this.size = size;
 	}
 
-	public synchronized String parking(String carNumber)throws ParkingLotException {
-		if(this.certNo.size() >= size) {
-			throw new ParkingLotException("parking lot had no parking space");
+	public synchronized Token parking(Car car)throws ParkingLotException {
+		if(this.licencePlates.size() >= size) {
+			throw new ParkingLotFullException("parking lot had no parking space");
 		}
-		this.certNo.add(carNumber);
-		return  carNumber;
+		Token token = new Token();
+		this.licencePlates.put(token,car);
+		return  token;
 	}
 
-	public synchronized String takeCar(String string) throws ParkingLotException {
-		if(certNo.contains(string)) {
-			certNo.remove(string);
-			return string;
+	public synchronized Car takeCar(Token token) throws ParkingLotException {
+		if(this.licencePlates.containsKey(token)) {
+			return this.licencePlates.remove(token);
 		}else {
-			throw new ParkingLotException("no that car:"+string);
+			throw new ParkingLotNotCarFoundException("no that car:"+token); 
 		}
 		
 	}
 
-	public int getSizeOfParkingSpace() {
-		return size - this.certNo.size();
+	public int getAvailableParkingSpace() {
+		return this.size - this.licencePlates.size();
 	}
+
 
 }

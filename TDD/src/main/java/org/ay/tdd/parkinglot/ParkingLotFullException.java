@@ -1,8 +1,8 @@
 package org.ay.tdd.parkinglot;
 
-public class ParkingLotException extends RuntimeException {
+public class ParkingLotFullException extends ParkingLotException {
 
-	public ParkingLotException(String string) {
+	public ParkingLotFullException(String string) {
 		super(string);
 	}
 
