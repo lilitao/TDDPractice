@@ -1,37 +1,37 @@
 package org.ay.tdd.parkinglot;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class ParkingLot {
 	private int size = 0;
-	List<String> number;
+	private List<String> certNo;
 
 	public ParkingLot(int size) {
-		this.number = new ArrayList<String>();
+		this.certNo = new CopyOnWriteArrayList<>();
 		this.size = size;
 	}
 
-	public synchronized String parking(String carNumber)throws Exception {
-		if(this.number.size() >= size) {
-			throw new Exception("parking lot had no parking space");
+	public synchronized String parking(String carNumber)throws ParkingLotException {
+		if(this.certNo.size() >= size) {
+			throw new ParkingLotException("parking lot had no parking space");
 		}
-		this.number.add(carNumber);
+		this.certNo.add(carNumber);
 		return  carNumber;
 	}
 
-	public synchronized String takeCar(String string) throws Exception {
-		if(number.contains(string)) {
-			number.remove(string);
+	public synchronized String takeCar(String string) throws ParkingLotException {
+		if(certNo.contains(string)) {
+			certNo.remove(string);
 			return string;
 		}else {
-			throw new Exception("no that car:"+string);
+			throw new ParkingLotException("no that car:"+string);
 		}
 		
 	}
 
 	public int getSizeOfParkingSpace() {
-		return size - this.number.size();
+		return size - this.certNo.size();
 	}
 
 }
