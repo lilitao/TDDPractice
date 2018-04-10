@@ -23,6 +23,34 @@ public class ParkingLotTest {
 		this.parkLot.parking("bcd");
 		this.parkLot.parking("efh");
 	}
+	
+	@Test
+	public void should_take_car_from_parkinglot() throws Exception {
+		this.parkLot.parking("abc");
+		Assert.assertEquals("abc", this.parkLot.takeCar("abc"));
+	}
+	
+	@Test(expected=Exception.class)
+	public void should_exception_when_take_a_car_twice() throws Exception {
+		this.parkLot.parking("abc");
+		this.parkLot.takeCar("abc");
+		this.parkLot.takeCar("abc");
+	}
+	
+	@Test(expected=Exception.class)
+	public void should_exception_when_take_car_from_empty_parkinglot() throws Exception {
+		this.parkLot.takeCar("abc");
+	}
+	
+	@Test
+	public void should_return_number_of_parking_space() throws Exception {
+		this.parkLot.parking("abc");
+		Assert.assertEquals(1, this.parkLot.getSizeOfParkingSpace());
+	}
+	@Test
+	public void should_return_2_when_empty_parking_log() {
+		Assert.assertEquals(2, this.parkLot.getSizeOfParkingSpace());
+	}
 
 	@Before
 	public void before() {
