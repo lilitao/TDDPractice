@@ -46,6 +46,31 @@ public class ParkingManagementTest {
 		assertEquals(bCar, aLot.takeCar(bToken));
 	}
 	
+	@Test
+	public void should_park_1_car_order_by_A_B_after_take_car() {
+		//give
+		ParkingManagement management = new ParkingManagement();
+		ParkingLot aLot = new ParkingLot(1);
+		ParkingLot bLot = new ParkingLot(2);
+		management.add(aLot);
+		management.add(bLot);
+		Car aCar = new Car();
+		Car bCar1 = new Car();
+		Car bCar2 = new Car();
+		Token aToken = management.parking(aCar);
+		Token bToken = management.parking(bCar1);
+		management.parking(bCar2);
+		management.take(aToken);
+		management.take(bToken);
+		//when
+	
+		Car newCar = new Car();
+		Token token =	management.parking(newCar);
+		//then
+		assertEquals(newCar, management.take(token));
+		
+	}
+	
 	@Test(expected=ParkingLotFullException.class)
 	public void should_fail_give_full_of_A_and_B_parkinglot() {
 		//give
@@ -59,4 +84,20 @@ public class ParkingManagementTest {
 		//when
 		management.parking(new Car());
 	}
+	
+	@Test
+	public void should_take_the_car_from_parking_management() {
+		//give
+		ParkingManagement management = new ParkingManagement();
+		ParkingLot aLot = new ParkingLot(1);
+		ParkingLot bLot = new ParkingLot(1);
+		management.add(aLot);
+		management.add(bLot);
+		Car car = new Car();
+		Token token =	management.parking(car );
+		
+		//when //then
+		assertEquals(car, management.take(token));
+	}
+	
 }

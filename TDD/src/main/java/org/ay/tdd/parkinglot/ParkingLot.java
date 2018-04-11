@@ -1,9 +1,7 @@
 package org.ay.tdd.parkinglot;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 public class ParkingLot {
 	private int size = 0;
@@ -34,6 +32,11 @@ public class ParkingLot {
 
 	public int getAvailableParkingSpace() {
 		return this.size - this.licencePlates.size();
+	}
+	
+	public boolean contain(Token token) {
+		
+		return this.licencePlates.containsKey(token);
 	}
 
 

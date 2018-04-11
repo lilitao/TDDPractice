@@ -2,6 +2,7 @@ package org.ay.tdd.parkinglot;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class ParkingManagement {
@@ -13,16 +14,21 @@ public class ParkingManagement {
 
 	public Token parking(Car aCar) {
 		if(this.parkingLots.stream()
-				.filter((p) -> p.getAvailableParkingSpace() > 0)
+				.filter(lot -> lot.getAvailableParkingSpace() > 0)
 				.collect(Collectors.toList())
-				.size() <= 0) {
-			throw new ParkingLotFullException("parking lot space is not available");
+				.isEmpty()) {
+			throw new ParkingLotFullException("parking lot space is full");
 		}
-		return this.parkingLots.stream()
-				.filter((p) -> p.getAvailableParkingSpace() > 0)
-				.findFirst()
-				.get()
-				.parking(aCar);
+		Optional<ParkingLot> lot = this.parkingLots.stream()
+				.filter(p -> p.getAvailableParkingSpace() > 0)
+				.findFirst();
+		return lot.isPresent() ? lot.get().parking(aCar):null;
+	}
+
+	public Car take( Token aToken) {
+		Optional<ParkingLot> val =	this.parkingLots.stream().filter(p -> p.contain(aToken)).findFirst();
+		return val.isPresent() ? val.get().takeCar(aToken) : null;
+		
 	}
 
 
