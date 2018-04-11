@@ -4,12 +4,12 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-public class ParkingManagementTest {
+public class ParkingBoyTest {
 
 	@Test
 	public void should_park_2_car_to_A_and_B() {
 		//give
-		ParkingManagement management = new ParkingManagement();
+		ParkingBoy management = new ParkingBoy();
 		ParkingLot aLot = new ParkingLot(1);
 		ParkingLot bLot = new ParkingLot(1);
 		management.add(aLot);
@@ -29,7 +29,7 @@ public class ParkingManagementTest {
 	@Test
 	public void should_park_2_car_order_by_A_B() {
 		//give
-		ParkingManagement management = new ParkingManagement();
+		ParkingBoy management = new ParkingBoy();
 		ParkingLot aLot = new ParkingLot(2);
 		ParkingLot bLot = new ParkingLot(1);
 		management.add(aLot);
@@ -49,7 +49,7 @@ public class ParkingManagementTest {
 	@Test
 	public void should_park_1_car_order_by_A_B_after_take_car() {
 		//give
-		ParkingManagement management = new ParkingManagement();
+		ParkingBoy management = new ParkingBoy();
 		ParkingLot aLot = new ParkingLot(1);
 		ParkingLot bLot = new ParkingLot(2);
 		management.add(aLot);
@@ -74,7 +74,7 @@ public class ParkingManagementTest {
 	@Test(expected=ParkingLotFullException.class)
 	public void should_fail_give_full_of_A_and_B_parkinglot() {
 		//give
-		ParkingManagement management = new ParkingManagement();
+		ParkingBoy management = new ParkingBoy();
 		ParkingLot aLot = new ParkingLot(1);
 		ParkingLot bLot = new ParkingLot(1);
 		management.add(aLot);
@@ -88,7 +88,7 @@ public class ParkingManagementTest {
 	@Test
 	public void should_take_the_car_from_parking_management() {
 		//give
-		ParkingManagement management = new ParkingManagement();
+		ParkingBoy management = new ParkingBoy();
 		ParkingLot aLot = new ParkingLot(1);
 		ParkingLot bLot = new ParkingLot(1);
 		management.add(aLot);

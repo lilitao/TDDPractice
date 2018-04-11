@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-public class ParkingManagement {
+public class ParkingBoy {
 	List<ParkingLot> parkingLots = new ArrayList<>();
 	
 	public void add(ParkingLot lot) {
