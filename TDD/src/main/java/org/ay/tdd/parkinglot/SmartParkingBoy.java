@@ -21,8 +21,7 @@ public class SmartParkingBoy {
 
 	private ParkingLot findAvailableParkingLot() {
 		for (ParkingLot parkingLot : parkingLots) {
-			if(parkingLot.getAvailableParkingSpace() > 0) 
-				if(isMostAvailableParkingSpace(parkingLot))
+			if(parkingLot.getAvailableParkingSpace() > 0 && isMostAvailableParkingSpace(parkingLot)) 
 					return parkingLot;
 		}
 		throw new ParkingLotFullException("available parking lot not found");
