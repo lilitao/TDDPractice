@@ -23,7 +23,7 @@ public class SuperParkingBoyTest {
 	}
 	
 	@Test
-	public void should_park_a_car_to_most_vancancy_rate() {
+	public void should_park_a_car_to_biggest_vancancy_rate() {
 		//give
 		ParkingLot alot = new ParkingLot(2);
 		ParkingLot blot = new ParkingLot(5);
@@ -40,7 +40,7 @@ public class SuperParkingBoyTest {
 	}
 	
 	@Test
-	public void should_park_a_car_to_anther_most_vancancy_rate() {
+	public void should_park_a_car_to_anther_biggest_vancancy_rate() {
 		//give
 		ParkingLot alot = new ParkingLot(5);
 		ParkingLot blot = new ParkingLot(2);
@@ -54,5 +54,15 @@ public class SuperParkingBoyTest {
 		//then
 		assertEquals(2, alot.getAvailableParkingSpace());
 		assertEquals(0, blot.getAvailableParkingSpace());
+	}
+	
+	@Test(expected=ParkingLotFullException.class)
+	public void should_fail_give_full_of_parkinglot() {
+		//give
+		ParkingLot alot = new ParkingLot(1);
+		ParkingLot blot = new ParkingLot(1);
+		SuperParkingBoy boy = new SuperParkingBoy(Arrays.asList(alot, blot));
+		//when then
+		boy.parking(new Car());
 	}
 }

@@ -39,5 +39,9 @@ public class ParkingLot {
 		return this.licencePlates.containsKey(token);
 	}
 
+	public int getSpaceSize() {
+		return this.size;
+	}
+
 
 }

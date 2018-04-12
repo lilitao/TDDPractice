@@ -15,18 +15,18 @@ public class SuperParkingBoy {
 	}
 
 	private ParkingLot findAavailableParkingLot() {
-		for (ParkingLot parkingLot : parkingLots) {
-			if(parkingLot.getAvailableParkingSpace() > 0) {
-				if(isMoastVancancyRate(parkingLot))
+		for (ParkingLot parkingLot : parkingLots) 
+			if(parkingLot.getAvailableParkingSpace() > 0 && isMoastVancancyRate(parkingLot)) 
 					return parkingLot;
-			}
-		}
+			
+		
 		throw new ParkingLotFullException("available parking lot not found");
 	}
 
 	private boolean isMoastVancancyRate(ParkingLot parkingLot) {
 		for (ParkingLot lot : parkingLots) {
-			
+			if(lot.getAvailableParkingSpace() / lot.getSpaceSize() > parkingLot.getAvailableParkingSpace() / parkingLot.getSpaceSize())
+				return false;
 		}
 		return true;
 	}
